@@ -15,12 +15,12 @@ import com.voiceon.security.CustomSecurityUser;
 public class UserServiceImpl implements UserDetailsService {
 	
 	@Autowired
-	private UserRepository userRepo;
+	private UserRepository userRepository;
 	
 	// loadUserByUsername << method inside UserDetailsService
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepo.findByUsername(username);
+		User user = userRepository.findByUsername(username);
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("Username or password is incorrect! ");

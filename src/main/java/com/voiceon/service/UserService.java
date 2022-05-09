@@ -9,8 +9,8 @@ import com.voiceon.repository.UserRepository;
 @Service
 public class UserService {
 	
-	@Autowired
-	private UserRepository userRepo;
+//	@Autowired
+//	private UserRepository userRepo;
 	
 //	@Autowired
 //	PasswordEncoder passwordEncoder;

@@ -13,11 +13,11 @@ import com.voiceon.repository.UserRepository;
 public class AdminService {
 	
 	@Autowired
-	private UserRepository userRepo;
+	private UserRepository userRepository;
 	
 	@Secured({"ROLE_ADMIN", "ROLE_SUPERUSER"})
 	public List<User> getAllUserAccounts() {
-		return userRepo.findAll();
+		return userRepository.findAll();
 	}
 
 }
