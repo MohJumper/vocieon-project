@@ -1,11 +1,18 @@
 package com.voiceon.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "users")
@@ -23,8 +30,28 @@ public class User {
 	private String email;
 	@Column(nullable = false, length = 64)
 	private String password;
+	@Column(unique = true, nullable = false, length = 50)
+	private String username;	
+	
+	// eager; will join the table every time we make a call, but it is not efficient
+	// lazy require more coding but more efficient
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<Authorities> authorities = new HashSet<>();
 	
 	
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public Set<Authorities> getAuthorities() {
+		return authorities;
+	}
+	public void setAuthorities(Set<Authorities> authorities) {
+		this.authorities = authorities;
+	}
 	public Long getId() {
 		return id;
 	}

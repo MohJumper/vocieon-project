@@ -12,8 +12,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 	
-	@Autowired
-	PasswordEncoder passwordEncoder;
+//	@Autowired
+//	PasswordEncoder passwordEncoder;
 	
 //	public void register()
 	
