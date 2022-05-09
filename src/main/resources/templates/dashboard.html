@@ -9,10 +9,12 @@
 	<p th:text="|Hello there ${user.username}|"> </p>
 
 	<!-- inside the SecurityConfiguration we disable the csft 
-		for security to have the button work for log out we need to do the following -->
+		for security to have the button work for log out we need to do the following 
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		-->
 		
 	<form action="/logout" method="post"> 
-		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		
 		<button type="button">Logout</button>
 	
 	</form>

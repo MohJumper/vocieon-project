@@ -7,9 +7,9 @@ import com.voiceon.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	@Query("select u from users u"
-		      + " left join fetch u.authorities"
-		      + " where u.username = :username")
+//	@Query("select u from users u"
+//		      + " left join fetch u.authorities"
+//		      + " where u.username = :username")
 	User findByUsername(String username);
 
 }

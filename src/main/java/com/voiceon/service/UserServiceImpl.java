@@ -1,5 +1,7 @@
 package com.voiceon.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,8 +21,10 @@ public class UserServiceImpl implements UserDetailsService {
 	
 	// loadUserByUsername << method inside UserDetailsService
 	@Override
+	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findByUsername(username);
+		System.out.println("from suerServiceImp >> " + user);
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("Username or password is incorrect! ");

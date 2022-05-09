@@ -44,10 +44,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 				http
-				// ----------- why disable? 
-					// learn more about csrf and why should not be disabled .... 
-//				.csrf().disable()
-				// the coming in authorization endpoints
+//				// ----------- why disable? 
+//					// learn more about csrf and why should not be disabled .... 
+				.csrf().disable()
+//				// the coming in authorization endpoints
 				.authorizeRequests()
 				// the /** << refers to anything insde of it 
 					.antMatchers("/admin/**").hasAnyRole("ADMIN")
@@ -55,7 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 					.anyRequest().hasAnyRole("USER").and()
 					.formLogin()
 //				.formLogin()
-					.loginPage("/login")
+//					.loginPage("/login")
 					// after login they forward to a pages ... in this case >> /dashboard
 					.defaultSuccessUrl("/dashboard")
 					.permitAll();

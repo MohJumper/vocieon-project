@@ -1,9 +1,11 @@
 package com.voiceon.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +15,8 @@ public class Authorities implements GrantedAuthority {
   private static final long serialVersionUID = -8123526131047887755L;
   private Long id;
   private String authority;
+  @ManyToOne
+  @JoinColumn(name = "id")
   private User user;
   
   @Id 
@@ -39,7 +43,7 @@ public class Authorities implements GrantedAuthority {
 	  // this hirbanate will add the user_id of user into the authorities table
 	  // to enforce this: you put foreign key in child table that point into the parent table 
   			// e.g, foreign key >> user_in in the authorities table from the parent table >> users
-  @ManyToOne
+ 
   public User getUser() {
     return user;
   }
@@ -47,4 +51,11 @@ public class Authorities implements GrantedAuthority {
   public void setUser(User user) {
     this.user = user;
   }
+
+@Override
+public String toString() {
+	return "Authorities [id=" + id + ", authority=" + authority + ", user=" + user + "]";
+}
+  
+  
 }
